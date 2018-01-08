@@ -25,15 +25,24 @@ export const loadSettings = filePath =>
 
 export const getUserParams = () => {
   const resumeDir = readlineSync.question(
-    `${messages.questions.resumeDir}: `
+    messages.questions.resumeDir
   )
   const rootPath = readlineSync.question(
-    `${messages.questions.rootPath}: `
+    messages.questions.rootPath
   )
   const newRootPath = readlineSync.question(
-    `${messages.questions.newRootPath}: `
+    messages.questions.newRootPath
   )
-  return {resumeDir, rootPath, newRootPath}
+  const rewrite = readlineSync.question(
+    messages.questions.rewrite
+  ) === 'y'
+  let newResumeDir = null
+  if (rewrite) {
+    newResumeDir = readlineSync.question(
+      messages.questions.newResumeDir
+    )
+  }
+  return {resumeDir, rootPath, newRootPath, rewrite, newResumeDir}
 }
 
 export const isResumeFile = filename =>
