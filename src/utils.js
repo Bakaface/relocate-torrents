@@ -14,9 +14,13 @@ const validateUserParams = userParams =>
 
 export const cutUserParamsExtraSlash = userParams => {
   return {
+    ...userParams,
     resumeDir: userParams.resumeDir.replace(/\/$/, ''), 
     rootPath: userParams.rootPath.replace(/\/$/, ''),
-    newRootPath: userParams.newRootPath.replace(/\/$/, '')
+    newRootPath: userParams.newRootPath.replace(/\/$/, ''),
+    newResumeDir: userParams.rewrite 
+      ? userParams.newResumeDir.replace(/\/$/, '')
+      : null,
   }
 }
 

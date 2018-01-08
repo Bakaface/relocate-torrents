@@ -3,14 +3,36 @@ import {messages} from '../src/constants'
 
 describe('utils', () => {
   describe('cutUserParamsExtraSlash()', () => {
-    expect(utils.cutUserParamsExtraSlash({
-      resumeDir: 'test1/', 
-      rootPath: 'test2/',
-      newRootPath: 'test3/'
-    })).toEqual({
-      resumeDir: 'test1', 
-      rootPath: 'test2',
-      newRootPath: 'test3'
+    it('should return valid object with rewrite', () => {
+      expect(utils.cutUserParamsExtraSlash({
+        resumeDir: 'test1/', 
+        rootPath: 'test2/',
+        newRootPath: 'test3/',
+        rewrite: true,
+        newResumeDir: 'test4/'
+      })).toEqual({
+        resumeDir: 'test1', 
+        rootPath: 'test2',
+        newRootPath: 'test3',
+        rewrite: true,
+        newResumeDir: 'test4'
+      })
+    })
+    
+    it('should return valid object without rewrite', () => {
+      expect(utils.cutUserParamsExtraSlash({
+        resumeDir: 'test1/', 
+        rootPath: 'test2/',
+        newRootPath: 'test3/',
+        rewrite: false,
+        newResumeDir: null
+      })).toEqual({
+        resumeDir: 'test1', 
+        rootPath: 'test2',
+        newRootPath: 'test3',
+        rewrite: false,
+        newResumeDir: null
+      })
     })
   })
 
