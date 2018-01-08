@@ -27,21 +27,26 @@ export const getUserParams = () => {
   const resumeDir = readlineSync.question(
     messages.questions.resumeDir
   )
+
   const rootPath = readlineSync.question(
     messages.questions.rootPath
   )
+
   const newRootPath = readlineSync.question(
     messages.questions.newRootPath
   )
+
   const rewrite = readlineSync.question(
     messages.questions.rewrite
   ) === 'y'
+
   let newResumeDir = null
-  if (rewrite) {
+  if (!rewrite) {
     newResumeDir = readlineSync.question(
       messages.questions.newResumeDir
     )
   }
+
   return {resumeDir, rootPath, newRootPath, rewrite, newResumeDir}
 }
 

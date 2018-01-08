@@ -6,8 +6,8 @@ export const messages = {
   questions: {
     resumeDir: 'Resume directory path: ',
     rootPath: 'Resume directory root path: ',
-    resumeDir: 'New root path: ',
-    rewrite: 'Rewrite files? (y/n)',
+    newRootPath: 'New root path: ',
+    rewrite: 'Rewrite files? (y/n): ',
     newResumeDir: 'Write into: '
   }
 }
