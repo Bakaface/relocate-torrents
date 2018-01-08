@@ -31,13 +31,26 @@ describe('utils', () => {
       newRootPath: '/downloads'
     }
 
-    const validFileData = 'somechars11:/media/Datasomechars'
-    const invalidFileData = 'somechars11:/media/NotDatasomechars'
-    const expectedFileData = 'somechars10:/downloadssomechars'
+    const validFileData = 
+      'd11:destination19:/media/Data/Somedir7:somekey7:somevale'
+    const invalidFileData = 
+      'd11:destination19:/media/NotData/Somedir7:somekey7:somevale'
+    const wrongLocationFileData = 
+      'd11:destination22:/media/NotData/Somedir7:somekey7:somevale'
+    const expectedFileData = 
+      'd11:destination18:/downloads/Somedir7:somekey7:somevale'
 
     it('should throw an error with invalid fileData', () => {
       expect(() => utils.parseResumeFileData(
         invalidFileData, userParams
+      )).toThrow(new Error(
+        messages.errors.invalidResumeFile
+      ))
+    })
+
+    it('should throw an error with wrong location fileData', () => {
+      expect(() => utils.parseResumeFileData(
+        wrongLocationFileData, userParams
       )).toThrow(new Error(
         messages.errors.invalidResumeFileLocation
       ))

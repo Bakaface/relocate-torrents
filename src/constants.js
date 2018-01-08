@@ -1,5 +1,6 @@
 export const messages = {
   errors: {
+    invalidResumeFile: 'Resume file is invalid',
     invalidResumeFileLocation: 'Location of resume file doesn\'t fit root path you specified'
   },
   questions: {

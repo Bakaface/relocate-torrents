@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
   entry: [
     './src/main.js'
@@ -14,5 +16,5 @@ module.exports = {
         loader: 'babel-loader'
       }
     ]
-  }
+  },
 }

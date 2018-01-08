@@ -1,4 +1,5 @@
 import Bencode from 'bencode-js'
+import {messages} from './constants'
 
 export default class BencodeParser {
   static encode(data) {
@@ -6,6 +7,11 @@ export default class BencodeParser {
   }
 
   static decode(data) {
-    return Bencode.decode(data)
+    try {
+      return Bencode.decode(data)
+    }
+    catch (TypeError) {
+      throw Error(messages.errors.invalidResumeFile)
+    }
   }
 }

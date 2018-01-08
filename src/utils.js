@@ -1,7 +1,9 @@
 import fs from 'fs'
 import readlineSync from 'readline-sync'
 
+import BencodeParser from './parser'
 import {messages} from './constants'
+import { encode } from 'punycode';
 
 // Private
 
@@ -38,13 +40,24 @@ export const isResumeFile = filename =>
   /\.resume$/.test(filename)
 
 export const parseResumeFileData = (fileData, userParams) => {
-  const match = fileData.match(new RegExp(
-    `\\d+:${userParams.rootPath.replace('/', '\/')}`
-  ))
-  if (!match) {
+  const params = cutUserParamsExtraSlash(userParams)
+  const decodedFileData = BencodeParser.decode(fileData)
+  const destination = decodedFileData.destination
+
+  if (!destination) {
+    throw new Error(
+      messages.errors.invalidResumeFile
+    )
+  }
+
+  if (!destination.includes(params.rootPath)) {
     throw new Error(
       messages.errors.invalidResumeFileLocation
     )
   }
-  return false
+
+  return BencodeParser.encode({
+    ...decodedFileData,
+    destination: destination.replace(params.rootPath, params.newRootPath)
+  })
 }
