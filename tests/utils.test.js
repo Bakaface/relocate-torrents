@@ -31,16 +31,22 @@ describe('utils', () => {
       newRootPath: '/downloads'
     }
 
-    const validFileData = 'somechars12:/media/Datasomechars'
-    const invalidFileData = 'somechars12:/media/NotDatasomechars'
+    const validFileData = 'somechars11:/media/Datasomechars'
+    const invalidFileData = 'somechars11:/media/NotDatasomechars'
+    const expectedFileData = 'somechars10:/downloadssomechars'
 
     it('should throw an error with invalid fileData', () => {
-      const result = 
       expect(() => utils.parseResumeFileData(
         invalidFileData, userParams
       )).toThrow(new Error(
         messages.errors.invalidResumeFileLocation
       ))
+    })
+
+    it('should return valid result', () => {
+      expect(utils.parseResumeFileData(
+        validFileData, userParams
+      )).toBe(expectedFileData)
     })
   })
 })

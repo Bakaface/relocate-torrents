@@ -48,4 +48,3 @@ export const parseResumeFileData = (fileData, userParams) => {
   }
   return false
 }
-
