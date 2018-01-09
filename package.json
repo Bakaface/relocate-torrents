@@ -27,5 +27,6 @@
     "type": "git",
     "url": "https://github.com/Bakaface/relocate-torrents.git"
   },
-  "homepage": "https://github.com/Bakaface/relocate-torrents"
+  "homepage": "https://github.com/Bakaface/relocate-torrents",
+  "bin": "./dist/bundle.js"
 }
