@@ -8,16 +8,16 @@ describe('BencodeParser', () => {
   const invalidFileData = 
     'dsomechars11:dest19:/media/Data/Somedir7:somekey7:somevale'
 
-  describe('getDestination()', () => {
+  describe('getDestinationValue()', () => {
     it('should return valid destination', () => {
-      expect(BencodeParser.getDestination(fileData)).toBe(
+      expect(BencodeParser.getDestinationValue(fileData)).toBe(
         '/media/Data/Somedir'
       )
     })
 
     it('should throw an exception if no key matched', () => {
       expect(
-        () => BencodeParser.getDestination(invalidFileData)
+        () => BencodeParser.getDestinationValue(invalidFileData)
       ).toThrow(new Error(messages.errors.invalidResumeFile))
     })
   })

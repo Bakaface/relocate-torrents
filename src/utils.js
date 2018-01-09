@@ -58,10 +58,13 @@ export const isResumeFile = filename =>
 
 export const parseResumeFileData = (fileData, userParams) => {
   const params = cutUserParamsExtraSlash(userParams)
-  const destination = BencodeParser.getDestination(fileData)
-
-
-
-
-  return ''
+  const destinationValue = BencodeParser.getDestinationValue(fileData)
+  const newDestinationValue = destinationValue.replace(
+    params.rootPath, params.newRootPath
+  )
+  
+  return fileData.replace(
+    `${destinationValue.length}:${destinationValue}`,
+    `${newDestinationValue.length}:${newDestinationValue}`,
+  )
 }

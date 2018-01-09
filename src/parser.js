@@ -2,7 +2,7 @@ import Bencode from 'bencode-js'
 import { messages } from './constants'
 
 export default class BencodeParser {
-  static getDestination(fileData) {
+  static getDestinationValue(fileData) {
     const match = /\d+:destination/.exec(fileData)
     if (!match) {
       throw new Error(messages.errors.invalidResumeFile)

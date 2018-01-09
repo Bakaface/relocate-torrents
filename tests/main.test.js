@@ -16,6 +16,6 @@ describe('main()', () => {
     const newFileData = fs.readFileSync(
       `${userParams.newResumeDir}/test.resume`
     ).toString()
-    console.log(newFileData)
+    //console.log(newFileData)
   })
 })
