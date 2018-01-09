@@ -6,7 +6,8 @@ const userParams = {
   resumeDir: '/home/aface/Programming/js/relocate-torrents/dist/', 
   rootPath: '/downloads',
   newRootPath: '/new-downloads',
-  rewrite: false
+  rewrite: false,
+  newResumeDir: '/home/aface/Programming/js/relocate-torrents/src/'
 }
 
 fs.readdir(userParams.resumeDir, (error, files) => {
@@ -19,7 +20,7 @@ fs.readdir(userParams.resumeDir, (error, files) => {
         : userParams.resumeDir
       fs.writeFileSync(
         `${newFileDir}/${filename}`,
-        utils.parseResumeFileData(fileData)
+        utils.parseResumeFileData(fileData, userParams)
       )
     }
   })

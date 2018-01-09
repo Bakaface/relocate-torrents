@@ -3,7 +3,6 @@ import readlineSync from 'readline-sync'
 
 import BencodeParser from './parser'
 import {messages} from './constants'
-import { encode } from 'punycode';
 
 // Private
 
