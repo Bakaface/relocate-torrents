@@ -1,17 +1,23 @@
 import Bencode from 'bencode-js'
-import {messages} from './constants'
+import { messages } from './constants'
 
 export default class BencodeParser {
-  static encode(data) {
-    return Bencode.encode(data)
+  static getDestination(fileData) {
+    const match = /\d+:destination/.exec(fileData)
+    if (!match) {
+      throw new Error(messages.errors.invalidResumeFile)
+    }
+    const matchEndIndex = match.index + match[0].length
+    const fileDataFromMatchIndex = fileData.slice(matchEndIndex)
+    const destinationLengthString = /^\d+/.exec(fileDataFromMatchIndex)[0]
+    const destinationLength = parseInt(destinationLengthString)
+    return fileDataFromMatchIndex.slice(
+      destinationLengthString.length + 1, 
+      destinationLength + destinationLengthString.length + 1
+    )
   }
 
-  static decode(data) {
-    try {
-      return Bencode.decode(data)
-    }
-    catch (TypeError) {
-      throw Error(messages.errors.invalidResumeFile)
-    }
+  static replaceDestination(fileData, oldDestination, newDestination) {
+    return 0
   }
 }

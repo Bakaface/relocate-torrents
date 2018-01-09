@@ -1,15 +1,24 @@
 import BencodeParser from '../src/parser'
+import { messages } from '../src/constants'
 
 describe('BencodeParser', () => {
-  it('should return valid encoded string', () => {
-    expect(BencodeParser.encode(
-      {"bar": "spam", "foo": 42}
-    )).toEqual('d3:bar4:spam3:fooi42ee')
-  })
 
-  it('should return valid decoded string', () => {
-    expect(BencodeParser.decode(
-      'd3:bar4:spam3:fooi42ee'
-    )).toEqual({"bar": "spam", "foo": 42})
+  const fileData = 
+    'dsomechars11:destination19:/media/Data/Somedir7:somekey7:somevale'
+  const invalidFileData = 
+    'dsomechars11:dest19:/media/Data/Somedir7:somekey7:somevale'
+
+  describe('getDestination()', () => {
+    it('should return valid destination', () => {
+      expect(BencodeParser.getDestination(fileData)).toBe(
+        '/media/Data/Somedir'
+      )
+    })
+
+    it('should throw an exception if no key matched', () => {
+      expect(
+        () => BencodeParser.getDestination(invalidFileData)
+      ).toThrow(new Error(messages.errors.invalidResumeFile))
+    })
   })
 })

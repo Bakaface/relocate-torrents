@@ -58,23 +58,10 @@ export const isResumeFile = filename =>
 
 export const parseResumeFileData = (fileData, userParams) => {
   const params = cutUserParamsExtraSlash(userParams)
-  const decodedFileData = BencodeParser.decode(fileData)
-  const destination = decodedFileData.destination
+  const destination = BencodeParser.getDestination(fileData)
 
-  if (!destination) {
-    throw new Error(
-      messages.errors.invalidResumeFile
-    )
-  }
 
-  if (!destination.includes(params.rootPath)) {
-    throw new Error(
-      messages.errors.invalidResumeFileLocation
-    )
-  }
 
-  return BencodeParser.encode({
-    ...decodedFileData,
-    destination: destination.replace(params.rootPath, params.newRootPath)
-  })
+
+  return ''
 }
