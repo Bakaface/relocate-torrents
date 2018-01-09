@@ -16,8 +16,4 @@ export default class BencodeParser {
       destinationLength + destinationLengthString.length + 1
     )
   }
-
-  static replaceDestination(fileData, oldDestination, newDestination) {
-    return 0
-  }
 }

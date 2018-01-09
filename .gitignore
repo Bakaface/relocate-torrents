@@ -1,8 +1,4 @@
 .vscode
 
-# Torrent files
-*.torrent
-*.resume
-
 dist/
 node_modules/

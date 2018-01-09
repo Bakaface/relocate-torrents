@@ -2,25 +2,21 @@ import fs from 'fs'
 import * as utils from './utils'
 
 //const userParams = utils.getUserParams()
-const userParams = {
-  resumeDir: '/home/aface/Programming/js/relocate-torrents/dist/', 
-  rootPath: '/downloads',
-  newRootPath: '/new-downloads',
-  rewrite: false,
-  newResumeDir: '/home/aface/Programming/js/relocate-torrents/src/'
-}
+
 
 export const main = userParams => {
+  const params = utils.cutUserParamsExtraSlash(userParams)
+
   fs.readdir(userParams.resumeDir, (error, files) => {
     if (error) { throw error }
     files.map(filename => {
       if (utils.isResumeFile(filename)) {
         const fileData = fs.readFileSync(
-          userParams.resumeDir + filename
+          `${userParams.resumeDir}/${filename}`
         ).toString()
         const newFileDir = userParams.rewrite 
-          ? userParams.newResumeDir 
-          : userParams.resumeDir
+          ? userParams.resumeDir 
+          : userParams.newResumeDir
         fs.writeFileSync(
           `${newFileDir}/${filename}`,
           utils.parseResumeFileData(fileData, userParams)
@@ -29,5 +25,3 @@ export const main = userParams => {
     })
   })
 }
-
-main(userParams)
