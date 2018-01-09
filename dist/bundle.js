@@ -193,7 +193,7 @@ var _main = __webpack_require__(5);
 
 var _utils = __webpack_require__(1);
 
-var userParams = utils.getUserParams();
+var userParams = (0, _utils.getUserParams)();
 (0, _main.main)(userParams);
 
 /***/ }),
@@ -219,9 +219,6 @@ var utils = _interopRequireWildcard(_utils);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//const userParams = utils.getUserParams()
-
 
 var main = exports.main = function main(userParams) {
   var params = utils.cutUserParamsExtraSlash(userParams);
@@ -1715,13 +1712,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _bencodeJs = __webpack_require__(12);
-
-var _bencodeJs2 = _interopRequireDefault(_bencodeJs);
-
 var _constants = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1749,13 +1740,6 @@ var BencodeParser = function () {
 }();
 
 exports.default = BencodeParser;
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-"use strict";
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/aface/Programming/js/relocate-torrents/node_modules/bencode-js/lib/index.js'");
 
 /***/ })
 /******/ ]);

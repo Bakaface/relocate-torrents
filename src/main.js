@@ -1,9 +1,6 @@
 import fs from 'fs'
 import * as utils from './utils'
 
-//const userParams = utils.getUserParams()
-
-
 export const main = userParams => {
   const params = utils.cutUserParamsExtraSlash(userParams)
 

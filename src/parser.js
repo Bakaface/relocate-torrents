@@ -1,4 +1,3 @@
-import Bencode from 'bencode-js'
 import { messages } from './constants'
 
 export default class BencodeParser {

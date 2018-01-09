@@ -1,7 +1,7 @@
 {
   "name": "relocate-torrents",
   "main": "dist/bundle.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "run": "cd dist && node bundle.js",
     "build": "webpack",
