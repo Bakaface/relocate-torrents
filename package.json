@@ -1,6 +1,5 @@
 {
   "name": "relocate-torrents",
-  "main": "dist/bundle.js",
   "version": "0.0.1",
   "scripts": {
     "run": "cd dist && node bundle.js",
@@ -28,5 +27,13 @@
     "url": "https://github.com/Bakaface/relocate-torrents.git"
   },
   "homepage": "https://github.com/Bakaface/relocate-torrents",
-  "bin": "./bin/relocate-torrents"
+  "main": "dist/bundle.js",
+  "bin": "./bin/relocate-torrents",
+  "keywords": [
+    ".resume",
+    "bittorrent",
+    "torrent",
+    "transmission",
+    "relocate"
+  ]
 }
