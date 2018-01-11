@@ -1,4 +1,5 @@
-var path = require('path');
+var path = require('path')
+var shell = require('shelljs')
 
 module.exports = {
   entry: [
@@ -17,4 +18,17 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    function () {
+      this.plugin('done', () => {
+        shell
+          .mkdir(`${__dirname}/bin`)
+        shell
+          .echo('#!/usr/bin/env node\n')
+          .cat(`${__dirname}/dist/bundle.js`)
+          .to(`${__dirname}/bin/relocate-torrents`)
+        shell.chmod(755, `${__dirname}/bin/relocate-torrents`)
+      })
+    },
+  ]
 }
