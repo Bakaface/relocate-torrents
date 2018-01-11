@@ -1,5 +1,6 @@
 import fs from 'fs'
 import * as utils from './utils'
+import { Buffer } from 'buffer';
 
 export const main = userParams => {
   const params = utils.cutUserParamsExtraSlash(userParams)
@@ -10,13 +11,14 @@ export const main = userParams => {
       if (utils.isResumeFile(filename)) {
         const fileData = fs.readFileSync(
           `${userParams.resumeDir}/${filename}`
-        ).toString()
+        ).toString('binary')
         const newFileDir = userParams.rewrite 
           ? userParams.resumeDir 
           : userParams.newResumeDir
         fs.writeFileSync(
           `${newFileDir}/${filename}`,
-          utils.parseResumeFileData(fileData, userParams)
+          utils.parseResumeFileData(fileData, userParams),
+          'binary'
         )
       }
     })
