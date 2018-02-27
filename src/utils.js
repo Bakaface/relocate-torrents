@@ -18,8 +18,8 @@ export const cutUserParamsExtraSlash = userParams => {
     rootPath: userParams.rootPath.replace(/\/$/, ''),
     newRootPath: userParams.newRootPath.replace(/\/$/, ''),
     newResumeDir: userParams.rewrite 
-      ? userParams.newResumeDir.replace(/\/$/, '')
-      : null,
+      ? null
+      : userParams.newResumeDir.replace(/\/$/, ''),
   }
 }
 

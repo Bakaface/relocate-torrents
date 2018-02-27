@@ -114,7 +114,7 @@ var cutUserParamsExtraSlash = exports.cutUserParamsExtraSlash = function cutUser
     resumeDir: userParams.resumeDir.replace(/\/$/, ''),
     rootPath: userParams.rootPath.replace(/\/$/, ''),
     newRootPath: userParams.newRootPath.replace(/\/$/, ''),
-    newResumeDir: userParams.rewrite ? userParams.newResumeDir.replace(/\/$/, '') : null
+    newResumeDir: userParams.rewrite ? null : userParams.newResumeDir.replace(/\/$/, '')
   });
 };
 
