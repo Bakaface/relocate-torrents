@@ -1,7 +1,7 @@
 {
   "name": "relocate-torrents",
   "description": "Little utility which relocates all your transmission .resume files to another root directory",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "scripts": {
     "run": "cd dist && node bundle.js",
     "build": "webpack",
